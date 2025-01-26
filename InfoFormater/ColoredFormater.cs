@@ -30,7 +30,7 @@ public class ColoredFormater : IFormater {
 	private static string? DetermineColor(float value) {
 		var color = value switch {
 			0 => Color.Green.ToEnumMember(),
-			>= 5 and <= 10 => Color.Yellow.ToEnumMember(),
+			> 0 and <= 10 => Color.Yellow.ToEnumMember(),
 			> 10 => Color.Red.ToEnumMember(),
 			_ => Color.Green.ToEnumMember()
 		};
