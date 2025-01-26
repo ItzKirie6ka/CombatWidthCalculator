@@ -1,6 +1,6 @@
 ﻿namespace CombatWidthCalculator.CombatWidth;
 
 public interface ICombatWidthInfo {
-	public Dictionary<Province, ICombatWidthEfficiency> GetInfo();
+	public Dictionary<IProvince, ICombatWidthEfficiency> GetInfo();
 	public string GetAdditionalLine();
 }

@@ -14,11 +14,12 @@ public class ColoredFormater : IFormater {
 		var builder = new StringBuilder();
 		
 		builder.Append(additionalLine);
-
+		
 		foreach (var pair in info) {
-			builder.Append($"\n{pair.Key.name}");
-			for (var i = 0; i < offset - pair.Key.name.Length; i++)
+			builder.Append($"\n{pair.Key.Name}");
+			for (var i = 0; i < offset - pair.Key.Name.Length; i++) {
 				builder.Append(' ');
+			}
 			foreach (var efficiency in pair.Value.GetEfficiency()) {
 				builder.Append($"\t{efficiency}".Pastel(DetermineColor(efficiency)));
 			}

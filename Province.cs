@@ -1,18 +1,18 @@
 ﻿namespace CombatWidthCalculator;
 
-public class Province {
-	public string name;
-	public int basicCombatWidth;
-	public int additionalCombatWidth;
-	
-	
-	public Province(string provinceName, int basicCW, int additionalCW) {
-		name = provinceName;
-		basicCombatWidth = basicCW;
-		additionalCombatWidth = additionalCW;
+public class Province : IProvince {
+	public string Name { get; set; }
+	public int BasicCombatWidth { get; set; }
+	public int AdditionalCombatWidth { get; set; }
+
+
+	public Province(string provinceName, int basicCw, int additionalCw) {
+		Name = provinceName;
+		BasicCombatWidth = basicCw;
+		AdditionalCombatWidth = additionalCw;
 	}
 
 	public void Display() {
-		Console.WriteLine($"Name: {name}\nBasicCombatWidth: {basicCombatWidth}\nAdditionalCombatWidth: {additionalCombatWidth}");
+		Console.WriteLine($"Name: {Name}\nBasicCombatWidth: {BasicCombatWidth}\nAdditionalCombatWidth: {AdditionalCombatWidth}");
 	}
 }

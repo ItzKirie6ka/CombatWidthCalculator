@@ -5,19 +5,19 @@ namespace CombatWidthCalculator.CombatWidth;
 public class CombatWidthInfo : ICombatWidthInfo {
 	private readonly int _directions;
 	
-	private readonly Dictionary<Province, ICombatWidthEfficiency> _info;
+	private readonly Dictionary<IProvince, ICombatWidthEfficiency> _info;
 	
 	
-	public CombatWidthInfo(List<Province> provinces, List<ICombatWidthEfficiency> stats, int dirs) {
+	public CombatWidthInfo(List<IProvince> provinces, List<ICombatWidthEfficiency> stats, int dirs) {
 		_directions = dirs;
-		_info = new Dictionary<Province, ICombatWidthEfficiency>();
+		_info = new Dictionary<IProvince, ICombatWidthEfficiency>();
 		
 		for (var i = 0; i < stats.Count; i++) {
 			_info.Add(provinces[i%provinces.Count], stats[i]);
 		}
 	}
 
-	public Dictionary<Province, ICombatWidthEfficiency> GetInfo() {
+	public Dictionary<IProvince, ICombatWidthEfficiency> GetInfo() {
 		return _info;
 	}
 

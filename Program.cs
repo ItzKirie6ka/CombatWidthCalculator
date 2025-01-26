@@ -44,12 +44,9 @@ public static class Program {
 	}
 
 	private static void GenerateJson() {
-		if (File.Exists(filePath)) {
-			return;
+		if (!File.Exists(filePath)) {
+			Directory.CreateDirectory(_directory);
 		}
-		
-		Directory.CreateDirectory(_directory);
-		File.Create(filePath).Close();
 		
 		var provinces = new List<Province> {
 								new("City", 80, 40),
@@ -62,6 +59,6 @@ public static class Program {
 								new("Marsh", 50, 25)
 							};
 		
-		JsonUtility.Write(filePath, provinces);
+		JsonUtility.WriteSafe(filePath, provinces);
 	}
 }

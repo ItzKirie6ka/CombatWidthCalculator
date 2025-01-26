@@ -6,11 +6,17 @@ namespace CombatWidthCalculator.CombatWidthEstimator;
 
 public class Estimator : IEstimator {
 	private const int DIRECTIONS = 6;
-	private readonly List<Province>? _provinces; 
+	private readonly List<IProvince>? _provinces; 
 	
 	
 	public Estimator() {
-		JsonUtility.Read(Program.filePath, out _provinces);
+		JsonUtility.Read(Program.filePath, out List<Province>? provinces);
+
+		_provinces = [];
+
+		foreach (var province in provinces!) {
+			_provinces.Add(province);
+		}
 	}
 	
 	public CombatWidthInfo Estimate(float value) {
@@ -21,7 +27,7 @@ public class Estimator : IEstimator {
 				ICombatWidthEfficiency efficiency = new CombatWidthEfficiency(DIRECTIONS); 
 				for (var j = 1; j <= DIRECTIONS; j++) {
 					efficiency.AddValue(
-						((province.basicCombatWidth + province.additionalCombatWidth * (j - 1)) % value).LimitDecimalPlace(1));
+						((province.BasicCombatWidth + province.AdditionalCombatWidth * (j - 1)) % value).LimitDecimalPlace(1));
 				}
 				combatWidthEfficiency.Add(efficiency);
 			}
