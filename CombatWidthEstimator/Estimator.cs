@@ -1,5 +1,6 @@
 ﻿using CombatWidthCalculator.CombatWidth;
 using CombatWidthCalculator.Utilities;
+using CombatWidthCalculator.Extensions;
 
 namespace CombatWidthCalculator.CombatWidthEstimator;
 
@@ -12,15 +13,15 @@ public class Estimator : IEstimator {
 		JsonUtility.Read(Program.filePath, out _provinces);
 	}
 	
-	public CombatWidthInfo Estimate(int value) {
+	public CombatWidthInfo Estimate(float value) {
 		var combatWidthEfficiency = new List<ICombatWidthEfficiency>();
-		
+
 		if (_provinces != null)
 			foreach (var province in _provinces) {
-				var efficiency = new CombatWidthEfficiency(DIRECTIONS); 
+				ICombatWidthEfficiency efficiency = new CombatWidthEfficiency(DIRECTIONS); 
 				for (var j = 1; j <= DIRECTIONS; j++) {
 					efficiency.AddValue(
-						(province.basicCombatWidth + province.additionalCombatWidth * (j - 1)) % value);
+						((province.basicCombatWidth + province.additionalCombatWidth * (j - 1)) % value).LimitDecimalPlace(1));
 				}
 				combatWidthEfficiency.Add(efficiency);
 			}

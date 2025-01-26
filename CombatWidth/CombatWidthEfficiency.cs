@@ -1,18 +1,18 @@
 ﻿namespace CombatWidthCalculator.CombatWidth;
 
 public class CombatWidthEfficiency : ICombatWidthEfficiency {
-	private List<int> _efficiency;
+	private readonly List<float> _efficiency;
 	
 	
 	public CombatWidthEfficiency(int dirs) {
-		_efficiency = new List<int>(dirs);
+		_efficiency = new List<float>(dirs);
 	}
 
-	public void AddValue(int value) {
+	public void AddValue(float value) {
 		_efficiency.Add(value);
 	}
 
-	public List<int> GetEfficiency() {
+	public List<float> GetEfficiency() {
 		return _efficiency; 
 	}
 }

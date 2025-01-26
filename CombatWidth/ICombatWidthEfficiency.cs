@@ -1,6 +1,6 @@
 ﻿namespace CombatWidthCalculator.CombatWidth;
 
 public interface ICombatWidthEfficiency {
-	public void AddValue(int value);
-	public List<int> GetEfficiency();
+	public void AddValue(float value);
+	public List<float> GetEfficiency();
 }

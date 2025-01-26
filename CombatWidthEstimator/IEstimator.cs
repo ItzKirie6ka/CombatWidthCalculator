@@ -3,5 +3,5 @@
 namespace CombatWidthCalculator.CombatWidthEstimator;
 
 public interface IEstimator {
-	public CombatWidthInfo Estimate(int value);
+	public CombatWidthInfo Estimate(float value);
 }

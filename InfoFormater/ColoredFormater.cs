@@ -26,7 +26,7 @@ public class ColoredFormater : IFormater {
 		return builder.ToString();
 	}
 
-	private string? DetermineColor(int value) {
+	private static string? DetermineColor(float value) {
 		var color = value switch {
 			0 => Color.Green.ToEnumMember(),
 			>= 5 and <= 10 => Color.Yellow.ToEnumMember(),

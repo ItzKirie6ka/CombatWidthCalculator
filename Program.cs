@@ -24,10 +24,10 @@ public static class Program {
 		Console.ReadKey();
 	}
 
-	private static int GetCombatWidth() {
+	private static float GetCombatWidth() {
 		Console.WriteLine("What's your combat width?");
 
-		int combatWidth;
+		float combatWidth;
 		string? input;
 		var attempt = 0;
 
@@ -38,7 +38,7 @@ public static class Program {
 			}
 
 			input = Console.ReadLine();
-		} while (!(int.TryParse(input, out combatWidth) && combatWidth > 0));
+		} while (!(float.TryParse(input, out combatWidth) && combatWidth > 0));
 		
 		return combatWidth;
 	}
